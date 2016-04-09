@@ -17,7 +17,7 @@
 				<!--****************** LAST NAME -->
 				<label class="item item-input item-stacked-label">
 					<span class="input-label">Last Name</span>
-					<input type="text" name="lastName" placeholder="Karim" ng-model="signUpData.lastName" >
+					<input type="text" name="lastName" placeholder="Karim" ng-model="signUpData.lastName" required>
                     <span style="color:red" ng-show="signUpForm.lastName.$dirty && signUpForm.lastName.$invalid">
                     <span ng-show="signUpForm.lastName.$error.required">LastName is required.</span>
                     </span>
@@ -26,19 +26,28 @@
 				<!--****************** EMAIL -->
 				<label class="item item-input item-stacked-label">
 					<span class="input-label">Email</span>
-					<input type="text" placeholder="abul@suhr.com" ng-model="signUpData.email">
+					<input type="text" placeholder="abul@suhr.com" ng-model="signUpData.email" name="email" required>
+                    <span style="color:red" ng-show="signUpForm.email.$dirty && signUpForm.email.$invalid">
+                    <span ng-show="signUpForm.email.$error.required">Email is required.</span>
+                    </span>
 				</label>
 
 				<!--****************** AGE -->
 				<label class="item item-input item-stacked-label">
 					<span class="input-label">Age</span>
-					<input type="text" placeholder="Age" ng-model="signUpData.age">
+					<input type="text" placeholder="Age" ng-model="signUpData.age" name="age" required>
+                    <span style="color:red" ng-show="signUpForm.age.$dirty && signUpForm.email.$invalid">
+                    <span ng-show="signUpForm.age.$error.required">Age is required.</span>
+                    </span>
 				</label>
                 
                 <!--****************** SCHOOL -->
 				<label class="item item-input item-stacked-label">
 					<span class="input-label">School/College</span>
-					<input type="text" placeholder="Age" ng-model="signUpData.edu">
+					<input type="text" placeholder="Age" ng-model="signUpData.edu" name="email" required>
+                    <span style="color:red" ng-show="signUpForm.email.$dirty && signUpForm.email.$invalid">
+                    <span ng-show="signUpForm.email.$error.required">Educational Information is required.</span>
+                    </span>
 				</label>
 
 
@@ -52,6 +61,7 @@
 				<label class="item item-input item-stacked-label">
 					<span class="input-label">Confirm Password</span>
 					<input type="password" placeholder="Password" ng-model="signUpData.confirmPassword">
+                    <span ng-show="IsMatch">Passwords have to match!</span>
 				</label>
 
 				<!--****************** GENDER-->
