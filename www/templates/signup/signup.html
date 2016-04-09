@@ -1,0 +1,130 @@
+<ion-view view-title="Sign Up">
+	 
+	<ion-content class="padding">
+
+		<form novalidate name="signUpForm">
+			<div class="list">
+
+				<!--****************** FIRST NAME -->
+				<label class="item item-input item-stacked-label">
+					<span class="input-label">First Name</span>
+					<input type="text" placeholder="Abdul" ng-model="signUpData.firstName">
+				</label>
+
+				<!--****************** LAST NAME -->
+				<label class="item item-input item-stacked-label">
+					<span class="input-label">Last Name</span>
+					<input type="text" placeholder="Suhr" ng-model="signUpData.lastName">
+				</label>
+
+				<!--****************** EMAIL -->
+				<label class="item item-input item-stacked-label">
+					<span class="input-label">Email</span>
+					<input type="text" placeholder="abul@suhr.com" ng-model="signUpData.email">
+				</label>
+
+				<!--****************** AGE -->
+				<label class="item item-input item-stacked-label">
+					<span class="input-label">Age</span>
+					<input type="text" placeholder="Age" ng-model="signUpData.age">
+				</label>
+
+
+				<!--****************** PASSWORD -->
+				<label class="item item-input item-stacked-label">
+					<span class="input-label">Password</span>
+					<input type="password" placeholder="Password" ng-model="signUpData.password">
+				</label>
+
+				<!--****************** CONFIRM PASSWORD-->
+				<label class="item item-input item-stacked-label">
+					<span class="input-label">Confirm Password</span>
+					<input type="password" placeholder="Password" ng-model="signUpData.confirmPassword">
+				</label>
+
+				<!--****************** GENDER-->
+				<label class="item item-radio item-stacked-label">
+					<div class="item item-divider"> 
+						Gender
+					</div>
+					<ion-radio name="gender" ng-model="signUpData.gender" ng-value="'M'">Male</ion-radio>
+					<ion-radio name="gender" ng-model="signUpData.gender" ng-value="'F'">Female</ion-radio>
+				</label> 
+
+
+				<!--****************** HUFFADH  -->
+				<label class="item item-radio item-stacked-label">
+					<div class="item item-divider"> 
+						Hafidh
+					</div>
+					<ion-radio ng-model="signUpData.hafidh" ng-value="'A'">Yes</ion-radio>
+					<ion-radio ng-model="signUpData.hafidh" ng-value="'B'">No</ion-radio>
+				</label>          
+
+				<!--****************** LOCAL MASJID -->
+				<div class="item item-divider"> 
+					Local Masjid
+				</div>
+				<label class = "item item-input item-select">
+
+					<div class = "input-label">
+						Select
+					</div>
+
+					<select name="masjid" ng-model="signUpData.masjid">
+						<option>Option 1</option>
+						<option selected>IACC</option>
+						<option>Option 3</option>
+					</select>
+				</label>
+
+
+				<!--****************** INTERESTS CHECKBOX-->
+				<div class="item item-divider"> 
+					Interests
+				</div>
+				<ul class="list">
+					<li class="item item-checkbox">
+						BasketBall
+						<label class="checkbox">
+							<input type="checkbox" ng-model="signUpData.basketball">
+						</label>
+					</li>
+
+					<li class="item item-checkbox">
+						Football
+						<label class="checkbox">
+							<input type="checkbox" ng-model="signUpData.football">
+						</label>
+					</li>
+
+					<li class="item item-checkbox">
+						Soccer
+						<label class="checkbox">
+							<input type="checkbox" ng-model="signUpData.soccer">
+						</label>
+					</li>
+
+					<li class="item item-checkbox">
+						Badminton
+						<label class="checkbox">
+							<input type="checkbox" ng-model="signUpData.badminton">
+						</label>
+					</li>
+
+				</ul>
+
+
+				<button class="button button-block button-assertive" ng-click="signUp()" style="margin-top:20px">
+					Create Account
+				</button>
+
+			</div>
+		</form>
+		
+		<pre> {{signUpData}} </pre>
+		
+	</ion-content>
+
+
+</ion-view>
