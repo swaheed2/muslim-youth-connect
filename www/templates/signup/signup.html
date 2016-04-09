@@ -8,13 +8,19 @@
 				<!--****************** FIRST NAME -->
 				<label class="item item-input item-stacked-label">
 					<span class="input-label">First Name</span>
-					<input type="text" placeholder="Abdul" ng-model="signUpData.firstName">
+					<input type="text" name="firstName" placeholder="Abdul" ng-model="signUpData.firstName" required>
+                    <span style="color:red" ng-show="signUpForm.firstName.$dirty && signUpForm.firstName.$invalid">
+                    <span ng-show="signUpForm.firstName.$error.required">Username is required.</span>
+                    </span>
 				</label>
 
 				<!--****************** LAST NAME -->
 				<label class="item item-input item-stacked-label">
 					<span class="input-label">Last Name</span>
-					<input type="text" placeholder="Suhr" ng-model="signUpData.lastName">
+					<input type="text" name="lastName" placeholder="Karim" ng-model="signUpData.lastName" >
+                    <span style="color:red" ng-show="signUpForm.lastName.$dirty && signUpForm.lastName.$invalid">
+                    <span ng-show="signUpForm.lastName.$error.required">LastName is required.</span>
+                    </span>
 				</label>
 
 				<!--****************** EMAIL -->
@@ -27,6 +33,12 @@
 				<label class="item item-input item-stacked-label">
 					<span class="input-label">Age</span>
 					<input type="text" placeholder="Age" ng-model="signUpData.age">
+				</label>
+                
+                <!--****************** SCHOOL -->
+				<label class="item item-input item-stacked-label">
+					<span class="input-label">School/College</span>
+					<input type="text" placeholder="Age" ng-model="signUpData.edu">
 				</label>
 
 
@@ -72,9 +84,9 @@
 					</div>
 
 					<select name="masjid" ng-model="signUpData.masjid">
-						<option>Option 1</option>
+						<option>IANT</option>
 						<option selected>IACC</option>
-						<option>Option 3</option>
+						<option>EPIC</option>
 					</select>
 				</label>
 
@@ -87,35 +99,37 @@
 					<li class="item item-checkbox">
 						BasketBall
 						<label class="checkbox">
-							<input type="checkbox" ng-model="signUpData.basketball">
+							<input type="checkbox" ng-model="signUpData.interests.basketball">
 						</label>
 					</li>
 
 					<li class="item item-checkbox">
 						Football
 						<label class="checkbox">
-							<input type="checkbox" ng-model="signUpData.football">
+							<input type="checkbox" ng-model="signUpData.interests.football">
 						</label>
 					</li>
 
 					<li class="item item-checkbox">
 						Soccer
 						<label class="checkbox">
-							<input type="checkbox" ng-model="signUpData.soccer">
+							<input type="checkbox" ng-model="signUpData.interests.soccer">
 						</label>
 					</li>
 
 					<li class="item item-checkbox">
 						Badminton
 						<label class="checkbox">
-							<input type="checkbox" ng-model="signUpData.badminton">
+							<input type="checkbox" ng-model="signUpData.interests.badminton">
 						</label>
 					</li>
 
 				</ul>
 
 
-				<button class="button button-block button-assertive" ng-click="signUp()" style="margin-top:20px">
+				<button class="button button-block button-assertive" ng-click="signUp()" style="margin-top:20px"
+                        ng-disabled="signUpForm.$invalid">
+                    
 					Create Account
 				</button>
 
