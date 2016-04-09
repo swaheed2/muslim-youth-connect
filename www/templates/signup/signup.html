@@ -44,7 +44,7 @@
                 <!--****************** SCHOOL -->
 				<label class="item item-input item-stacked-label">
 					<span class="input-label">School/College</span>
-					<input type="text" placeholder="Age" ng-model="signUpData.edu" name="email" required>
+					<input type="text" placeholder="Plano Senior" ng-model="signUpData.edu" name="email" required>
                     <span style="color:red" ng-show="signUpForm.email.$dirty && signUpForm.email.$invalid">
                     <span ng-show="signUpForm.email.$error.required">Educational Information is required.</span>
                     </span>
@@ -54,14 +54,14 @@
 				<!--****************** PASSWORD -->
 				<label class="item item-input item-stacked-label">
 					<span class="input-label">Password</span>
-					<input type="password" placeholder="Password" ng-model="signUpData.password">
+					<input type="password" placeholder="Password" ng-model="signUpData.password" required>
 				</label>
 
 				<!--****************** CONFIRM PASSWORD-->
 				<label class="item item-input item-stacked-label">
 					<span class="input-label">Confirm Password</span>
-					<input type="password" placeholder="Password" ng-model="signUpData.confirmPassword">
-                    <span ng-show="IsMatch">Passwords have to match!</span>
+					<input type="password" placeholder="Password" ng-model="signUpData.confirmPassword" name="confirmPassword" required>
+                    <span class="input-label" ng-show="">Passwords do not match</span>
 				</label>
 
 				<!--****************** GENDER-->
@@ -79,8 +79,8 @@
 					<div class="item item-divider"> 
 						Hafidh
 					</div>
-					<ion-radio ng-model="signUpData.hafidh" ng-value="'A'">Yes</ion-radio>
-					<ion-radio ng-model="signUpData.hafidh" ng-value="'B'">No</ion-radio>
+					<ion-radio ng-model="signUpData.hafidh" ng-value="true">Yes</ion-radio>
+					<ion-radio ng-model="signUpData.hafidh" ng-value="false">No</ion-radio>
 				</label>          
 
 				<!--****************** LOCAL MASJID -->
