@@ -90,6 +90,43 @@ angular.module("myServices").factory(
 			 Auth.$unauth();
 			 $state.transitionTo('starter',{location:"replace"})
 		 }
+		 
+		 function getUsers(cb) {
+			console.log("uid in getUserData: " + authData.uid); 
+			var ref = new Firebase($scope.refString);
+			console.log("gotten ref");
+			ref.once("value", function(snapshot) {
+				console.log("inside once");
+				var teamName = snapshot.key(); 
+				var teamData = snapshot.val();
+				console.log("teamName: " + teamName); 
+				//console.log("teamData: " + JSON.stringify(teamData,null,2)); 
+				if(teamData.managers && teamData.managers[uid]){
+					console.log("found in manager: " + teamName); 
+					userData.type = "manager";  
+					userData.teamName = teamName;
+				}
+				else if(teamData.treasurers && teamData.treasurers[uid]){
+					userData.type = "treasurer";  
+					userData.teamName = teamName;
+				}
+				else if(teamData.players && teamData.players[uid]){
+					userData.type = "player";  
+					userData.teamName = teamName;
+				}
+				else{
+					console.log("skipping team: " + JSON.stringify(teamData,null,2));
+				}
+
+				console.log(JSON.stringify(userData,null,2));
+				if(cb){
+					console.log("callback getUserData about to be called");
+					cb(userData);
+					return;
+				}
+
+			}); 
+		}
 
 		 var auth = {
 

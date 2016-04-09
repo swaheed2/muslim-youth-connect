@@ -36,7 +36,7 @@
 				<label class="item item-input item-stacked-label">
 					<span class="input-label">Age</span>
 					<input type="text" placeholder="Age" ng-model="signUpData.age" name="age" required>
-                    <span style="color:red" ng-show="signUpForm.age.$dirty && signUpForm.email.$invalid">
+                    <span style="color:red" ng-show="signUpForm.age.$dirty && signUpForm.age.$invalid">
                     <span ng-show="signUpForm.age.$error.required">Age is required.</span>
                     </span>
 				</label>
@@ -44,9 +44,9 @@
                 <!--****************** SCHOOL -->
 				<label class="item item-input item-stacked-label">
 					<span class="input-label">School/College</span>
-					<input type="text" placeholder="Plano Senior" ng-model="signUpData.edu" name="email" required>
-                    <span style="color:red" ng-show="signUpForm.email.$dirty && signUpForm.email.$invalid">
-                    <span ng-show="signUpForm.email.$error.required">Educational Information is required.</span>
+					<input type="text" placeholder="Plano Senior" ng-model="signUpData.edu" name="edu" required>
+                    <span style="color:red" ng-show="signUpForm.edu.$dirty && signUpForm.edu.$invalid">
+                    <span ng-show="signUpForm.edu.$error.required">Educational Information is required.</span>
                     </span>
 				</label>
 
@@ -60,8 +60,7 @@
 				<!--****************** CONFIRM PASSWORD-->
 				<label class="item item-input item-stacked-label">
 					<span class="input-label">Confirm Password</span>
-					<input type="password" placeholder="Password" ng-model="signUpData.confirmPassword" name="confirmPassword" required>
-                    <span class="input-label" ng-show="">Passwords do not match</span>
+					<input type="password" placeholder="Password" ng-model="signUpData.confirmPassword" name="confirmPassword" required> 
 				</label>
 
 				<!--****************** GENDER-->
