@@ -1,13 +1,11 @@
-<ion-modal-view>
-	<ion-header-bar>
-		<h1 class="title">Login</h1>
-		<div class="buttons">
-			<button class="button button-clear" ng-click="closeLogin()">Close</button>
-		</div>
-	</ion-header-bar>
-	<ion-content>
-		<h1 class="HomePageHeader">Muslim <br> Youth <br> Connect</h1> 
-		<div class="buttons">
+<ion-view   hide-nav-bar="true" >
+	<!-- <ion-header-bar title = "Muslim Youth" />-->
+	<ion-content  class="starter-page" scroll="false">
+		<img src="/img/starter-bg.jpg">
+		<h1 class="HomePageHeader">Muslim <br> Youth <br> Connect</h1>
+ 
+
+		<div class="buttons-starter">
 			<div class="row">
 				<div class="col">
 					<button class="button button-block button-assertive" ui-sref="login">
@@ -15,7 +13,7 @@
 					</button>
 				</div>
 				<div class="col">
-					<button class="button button-block button-positive" ui-sref="signup">
+					<button class="button button-block button-positive"  ui-sref="signup">
 						signup
 					</button>
 				</div>
@@ -24,4 +22,4 @@
 			</div>
 		</div>
 	</ion-content>
-</ion-modal-view>
+</ion-view>

@@ -1,6 +1,25 @@
-/* Empty. Add your own CSS if you like */
+.starter-page {
+    align-content:  center;  
+    margin: auto;  
+}
+
+.starter-page img{
+	opacity: 0.4;
+	width : 100%;
+	height: 100%;
+	position: absolute;
+	z-index: -10;
+}
+
+.HomePageHeader {
+    margin-top: :20%;
+    font-size: 50px;
+    text-align: center;
+}
 
 
-.test{
-	font-size: 100px;
+.buttons-starter{
+    position: absolute; 
+    width: 100%;
+    bottom:10%;
 }
