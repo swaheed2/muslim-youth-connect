@@ -7,23 +7,9 @@
 			</ion-toggle>
 		</ion-list>
 
-		<ion-list>
-			<ion-item class="item-icon-right" ng-repeat="(key,val) in events" type="item-text-wrap" >
-				<pre>{{key}}</pre>
-				<div href="#/tab/eventDetail/{{key}}">
-					<div class="card">
-						<div class="item item-divider">
-							{{val.name}}
-						</div>
-						<div class="item item-text-wrap">
-							{{val.info}}
-						</div> 
-						<div class="item item-divider">
-							Published By: {{val.createdBy.firstName}} {{val.createdBy.lastName}}
-						</div>
-					</div> 
-				</div>
-
+		<ion-list ng-repeat="name in attendees">
+			<ion-item class="item-icon-right" type="item-text-wrap" >
+				 <p>{{name}}</p>
 			</ion-item>
 		</ion-list>
 	</ion-content>

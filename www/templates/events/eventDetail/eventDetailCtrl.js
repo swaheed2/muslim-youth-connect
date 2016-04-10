@@ -4,11 +4,19 @@
 myControllers.controller('EventDetailCtrl', function($scope,$stateParams,AuthService,$firebaseAuth) {
 
 	$scope.settings = {
-		going: true
+		going: false
 	}; 
 	var refString;
 	var ref;
 	var userProfile;
+
+	$scope.attendees = [
+		"Sumama Waheed",
+		"Fazeel Tola",
+		"Bilal Khan",
+		"Abdur Rahman",
+		"Bilal Malil"
+	]
 
 
 	$scope.getAttendance = function() {
@@ -16,26 +24,27 @@ myControllers.controller('EventDetailCtrl', function($scope,$stateParams,AuthSer
 		ref = new Firebase(refString); 
 		console.log("getting attendance");
 		userProfile = AuthService.getUserProfile();
+		for(var i=0; i< $scope.attendees.length;i++){
+			if($scope.attendees[i] === userProfile.firstName + " " + userProfile.lastName){
+				$scope.settings.going = true;
+			}
+		}
 	}
 	$scope.getAttendance();
 
 	$scope.updateAttendance = function(){
-
 		var going = $scope.settings.going;
-		var id = $stateParams.id;
-		if(going){
-			var events = ref.child("events");
-			console.log("$stateParams.id: " + going);
-			events.on("value", function(snapshot) { 
-				console.log("events on : " + going);
-				var val = snapshot.val(); 
-				var eventRef = ref.child("events").child(id).child("attendance");  
-				var uid = userProfile.uid;  
-				console.log("val: " + JSON.stringify(val,null,2)); 
-				eventRef.push(uid);  
-			});
-		}
 
+		if(going){
+			$scope.attendees.push(userProfile.firstName + " " + userProfile.lastName)
+		} 
+		else{
+			for(var i=0; i< $scope.attendees.length;i++){
+				if($scope.attendees[i] === userProfile.firstName + " " + userProfile.lastName){
+					$scope.attendees.splice(i,1);
+				}
+			}
+		}
 	}
 
 
