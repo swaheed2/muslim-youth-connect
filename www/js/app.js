@@ -52,7 +52,7 @@ var myApp = angular.module('starter', ['ionic', 'myControllers', 'myServices','f
 		.state('starter', {
 		url: '/starter', 
 		templateUrl: 'templates/starter/starter.html',
-		controller : 'DashCtrl'
+		controller : 'MainCtrl'
 	})
 
 	// signup state
@@ -83,7 +83,7 @@ var myApp = angular.module('starter', ['ionic', 'myControllers', 'myServices','f
 		views: {
 			'tab-dash': {
 				templateUrl: 'templates/tab-dash.html',
-				controller: 'DashCtrl'
+				controller: 'YouthCtrl'
 			}
 		}
 	})

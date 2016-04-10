@@ -6,19 +6,20 @@ angular.module("myServices").factory(
 
 	 function($firebaseAuth,$ionicLoading,$state){
 		 console.log("Initialize Auth Service");		
- 
+
 		 var userData = {};
 		 var refString = "https://muslimyouthconnect.firebaseio.com/"; 
 		 var ref = new Firebase(refString);  
 		 var Auth =  $firebaseAuth(ref); 
 		 var authData = null;
-		 
+		 var userProfile = null;
+
 		 var showLoader = function(message){
 			 $ionicLoading.show({
 				 template: '<ion-spinner icon="ios"></ion-spinner> <br>' + message, 
 			 })
 		 };
-		 
+
 		 var hideLoader = function(){
 			 $ionicLoading.hide();
 		 };
@@ -41,7 +42,9 @@ angular.module("myServices").factory(
 				 var uid = userData.uid;
 				 console.log("User created with uid: " + JSON.stringify(userData,null,2)); 
 				 console.log(uid) 
-				 var masjidRef = ref.child(signUpData.masjid).child(signUpData.gender).child(uid); 
+				 var masjidRef = ref.child("users").child(uid);
+
+				 //ref.child(signUpData.masjid).child(signUpData.gender).child(uid); 
 
 				 delete signUpData["password"]; 
 				 delete signUpData["confirmPassword"]; 
@@ -76,7 +79,7 @@ angular.module("myServices").factory(
 			 console.log("auth changed: " + auth);
 
 			 if(auth){
-				authData = auth; 
+				 authData = auth; 
 				 console.log("User " + authData.uid + " is logged in");  
 				 $state.transitionTo('tab.dash', { location:"replace" });
 			 }
@@ -85,48 +88,37 @@ angular.module("myServices").factory(
 				 console.log("no auth data");
 			 }
 		 }
-		 
+
 		 function logOut(){
 			 Auth.$unauth();
 			 $state.transitionTo('starter',{location:"replace"})
 		 }
-		 
-		 function getUsers(cb) {
-			console.log("uid in getUserData: " + authData.uid); 
-			var ref = new Firebase($scope.refString);
-			console.log("gotten ref");
-			ref.once("value", function(snapshot) {
-				console.log("inside once");
-				var teamName = snapshot.key(); 
-				var teamData = snapshot.val();
-				console.log("teamName: " + teamName); 
-				//console.log("teamData: " + JSON.stringify(teamData,null,2)); 
-				if(teamData.managers && teamData.managers[uid]){
-					console.log("found in manager: " + teamName); 
-					userData.type = "manager";  
-					userData.teamName = teamName;
-				}
-				else if(teamData.treasurers && teamData.treasurers[uid]){
-					userData.type = "treasurer";  
-					userData.teamName = teamName;
-				}
-				else if(teamData.players && teamData.players[uid]){
-					userData.type = "player";  
-					userData.teamName = teamName;
-				}
-				else{
-					console.log("skipping team: " + JSON.stringify(teamData,null,2));
-				}
 
-				console.log(JSON.stringify(userData,null,2));
-				if(cb){
-					console.log("callback getUserData about to be called");
-					cb(userData);
-					return;
-				}
+		 function setUserProfile(cb) {
 
-			}); 
-		}
+			 var users = ref.child("users");
+
+			 console.log("uid in getUserData: " + authData.uid);   
+			 users.once("value", function(snapshot) {
+				 var key = snapshot.key(); 
+				 var val = snapshot.val();
+				 // console.log("val: " + JSON.stringify(val,null,2)); 
+
+				 userProfile = val[authData.uid];
+
+				 console.log("UserProfile: " + JSON.stringify(userProfile,null,2));
+
+				 if(cb) cb();
+			 });  
+
+		 };
+
+		 function getMaleUsers(cb) {
+			 var ref = ref.child("users");
+			 ref.orderByChild("height").equalTo(25).on("child_added", function(snapshot) {
+				 console.log(snapshot.key());
+			 });
+		 }
 
 		 var auth = {
 
@@ -142,10 +134,12 @@ angular.module("myServices").factory(
 			 signUp		: 	function(signUpData,cb){
 				 return signUp(signUpData,cb);
 			 },
-			 
+
 			 logOut		: function() { return logOut()									},
-			 
-			 getAuthData	: function()	{ return authData;							}
+
+			 getAuthData	: function()	{ return authData;							},
+
+			 setUserProfile : function(cb)  { setUserProfile(cb)						}
 
 		 };
 

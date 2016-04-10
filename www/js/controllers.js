@@ -18,33 +18,35 @@ var myControllers = angular.module('myControllers', []);
 myControllers.controller('MainCtrl', function($scope,AuthService) {
 
 	$scope.auth = AuthService;   
- 
+
 
 }); 
 
 
 myControllers.controller('AuthCtrl', function($scope) { 
-	
+
 	$scope.$on('$viewContentLoaded', function(){
 
 	});
 });
- 
- 
 
 
-myControllers.controller('DashCtrl', function($scope,AuthService){
+
+
+myControllers.controller('YouthCtrl', function($scope,AuthService,Chats){
 
 	$scope.auth = AuthService;
-	
-});
-
-myControllers.controller('ChatsCtrl', function($scope, Chats) { 
 
 	$scope.chats = Chats.all();
 	$scope.remove = function(chat) {
 		Chats.remove(chat);
 	};
+
+});
+
+myControllers.controller('ChatsCtrl', function($scope, Chats) { 
+
+
 });
 
 myControllers.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {

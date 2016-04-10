@@ -14,7 +14,7 @@ myControllers.controller(
 			age		  : 10,
 			email     : "male1@gmail.com",
 			password  : "asdf",
-			confirmPassword : "asd",
+			confirmPassword : "asdf",
 			masjid    : "IACC",
 			gender    : "M",
 			interests : {
@@ -30,15 +30,17 @@ myControllers.controller(
 
 
 		$scope.signUp = function() {
+			var signUpData = (JSON.parse(JSON.stringify($scope.signUpData)));
 			if($scope.signUpData.password === $scope.signUpData.confirmPassword){
 				AuthService.signUp($scope.signUpData,function(err,res){
 					console.log("err: " + err);
 					console.log("res: " + res);
 
 					if(!err){
+						console.log("signUpData: " + JSON.stringify(signUpData,null,2));
 						AuthService.logIn({
-							email : $scope.signUpData.email,
-							password : $scope.signUpData.password
+							email : signUpData.email,
+							password : signUpData.password
 						},function(err,res){
 							if(!err){
 								$state.transitionTo('tab.dash',{location:"replace"});

@@ -7,8 +7,8 @@ myControllers.controller(
 
 
 		$scope.logInData = {
-			email : "sumamawaheed1@gmail.com",
-			password : "asdfadf"
+			email : "male2@gmail.com",
+			password : "asdf"
 		};
 
 
