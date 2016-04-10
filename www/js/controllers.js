@@ -54,12 +54,7 @@ myControllers.controller('YouthCtrl', function($scope,AuthService,Chats){
 	};
 
 });
-
-myControllers.controller('ChatsCtrl', function($scope, Chats) { 
-
-
-});
-
+ 
 
 
 myControllers.controller('AccountCtrl', function($scope) {

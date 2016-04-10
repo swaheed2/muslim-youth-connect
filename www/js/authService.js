@@ -137,6 +137,19 @@ angular.module("myServices").factory(
 			 });
 		 }
 
+		 function getProfile(uid,cb){
+			 
+			 console.log("getProfile uid: " + uid);
+			 
+			 var users = ref.child("users");
+
+			 console.log("uid in getUserData: " + authData.uid);   
+			 users.once("value", function(snapshot) { 
+				 var val = snapshot.val();   
+				 cb(val[uid]);
+			 });  
+		 }
+
 		 var auth = {
 
 			 init		:   function() {
@@ -158,7 +171,8 @@ angular.module("myServices").factory(
 			 getMaleUsers   : function(cb)  { getMaleUsers(cb);							},
 			 showLoader	    : function()    { showLoader();								}, 
 			 hideLoader	    : function()    { hideLoader();								},
-			 getUserProfile : function() 	{ return userProfile;						}
+			 getUserProfile : function() 	{ return userProfile;						},
+			 getProfile		: function(uid,cb)  { return getProfile(uid,cb)			    }
 
 
 		 };

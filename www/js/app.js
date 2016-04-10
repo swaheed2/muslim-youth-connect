@@ -98,14 +98,24 @@ var myApp = angular.module('starter', ['ionic', 'myControllers', 'myServices','f
 		}
 	})
 		.state('tab.chat-detail', {
-		url: '/users/:uid',
+		url: '/chats/:uid',
 		views: {
 			'tab-chats': {
-				templateUrl: 'templates/chat-detail.html',
-				controller: 'ChatDetailCtrl'
+				templateUrl: 'templates/userDetail/userDetail.html',
+				controller: 'UserDetailCtrl'
 			}
 		}
 	})
+	
+//	.state('tab.userDetail', {
+//		url: '/dash/:uid',
+//		views: {
+//			'tab-chats': {
+//				templateUrl: 'templates/userDetail/userDetail.html',
+//				controller: 'UserDetailCtrl'
+//			}
+//		}
+//	})
 
 		.state('tab.account', {
 		url: '/account',
