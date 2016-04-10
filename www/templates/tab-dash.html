@@ -6,16 +6,13 @@
 	<ion-content>
 		<button ng-click="auth.setUserProfile()">Set User Profile</button>
 		<button ng-click="auth.getMaleUsers()">getMaleUsers</button>
+		 
 		<ion-list>
-			<ion-item class="item-remove-animate item-icon-right" ng-repeat="user in users" type="item-text-wrap" href="#/tab/chats/{{chat.uid}}">
+			<ion-item class="item-icon-right" ng-repeat="user in users" type="item-text-wrap" href="#/tab/chats/{{user.uid}}">
 				 
-				<h2>{{chat.name}}</h2>
+				<h2>{{user.firstName}} {{}}</h2>
 				<p>{{chat.lastText}}</p>
 				<i class="icon ion-chevron-right icon-accessory"></i>
-
-				<ion-option-button class="button-assertive" ng-click="remove(chat)">
-					Delete
-				</ion-option-button>
 			</ion-item>
 		</ion-list>
 	</ion-content>

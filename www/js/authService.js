@@ -81,7 +81,11 @@ angular.module("myServices").factory(
 			 if(auth){
 				 authData = auth; 
 				 console.log("User " + authData.uid + " is logged in");  
-				 $state.transitionTo('tab.dash', { location:"replace" });
+				 if(userProfile === null){
+					 setUserProfile(function(){
+						 $state.transitionTo('tab.dash', { location:"replace" });
+					 })
+				 } 
 			 }
 			 else{ 
 				 //$scope.safeApply();
@@ -118,7 +122,7 @@ angular.module("myServices").factory(
 			 users.orderByChild("gender").equalTo("M").on("child_added", function(snapshot) {
 				 var key = snapshot.key(); 
 				 var val = snapshot.val();
-				 console.log("val: " + JSON.stringify(val,null,2)); 
+				 //console.log("val: " + JSON.stringify(val,null,2)); 
 				 cb(val);
 			 });
 		 }
@@ -153,9 +157,9 @@ angular.module("myServices").factory(
 			 setUserProfile : function(cb)  { setUserProfile(cb);						},
 			 getMaleUsers   : function(cb)  { getMaleUsers(cb);							},
 			 showLoader	    : function()    { showLoader();								}, 
-			 hideLoader	    : function()    { hideLoader();								}
-			 
-			 
+			 hideLoader	    : function()    { hideLoader();								},
+			 getUserProfile : function() 	{ return userProfile;						}
+
 
 		 };
 

@@ -37,10 +37,14 @@ myControllers.controller('YouthCtrl', function($scope,AuthService,Chats){
 
 	$scope.auth = AuthService;
 
+	$scope.users = [];
+	
+	console.log("userprofile: " + JSON.stringify(AuthService.getUserProfile(),null,2));
+	
 	if(AuthService.getUserProfile().gender === "M"){
 		console.log("user is male");
-		AuthService.getMaleUsers(function(users){
-			$scope.users = users;
+		AuthService.getMaleUsers(function(users){ 
+			$scope.users.push(users);
 		})
 	}
 	
@@ -56,9 +60,7 @@ myControllers.controller('ChatsCtrl', function($scope, Chats) {
 
 });
 
-myControllers.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-	$scope.chat = Chats.get($stateParams.chatId);
-});
+
 
 myControllers.controller('AccountCtrl', function($scope) {
 	$scope.settings = {

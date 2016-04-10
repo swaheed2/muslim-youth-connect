@@ -98,7 +98,7 @@ var myApp = angular.module('starter', ['ionic', 'myControllers', 'myServices','f
 		}
 	})
 		.state('tab.chat-detail', {
-		url: '/chats/:chatId',
+		url: '/users/:uid',
 		views: {
 			'tab-chats': {
 				templateUrl: 'templates/chat-detail.html',
