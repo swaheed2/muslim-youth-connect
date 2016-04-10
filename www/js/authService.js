@@ -138,9 +138,9 @@ angular.module("myServices").factory(
 		 }
 
 		 function getProfile(uid,cb){
-			 
+
 			 console.log("getProfile uid: " + uid);
-			 
+
 			 var users = ref.child("users");
 
 			 console.log("uid in getUserData: " + authData.uid);   
@@ -148,6 +148,22 @@ angular.module("myServices").factory(
 				 var val = snapshot.val();   
 				 cb(val[uid]);
 			 });  
+		 };
+
+		 function createEvent(eventData,cb){
+			 var eventRef = ref.child("events");   
+			 eventRef.push(eventData);   
+			 cb();
+		 };
+
+		 function getAllEvents(cb){
+			 var users = ref.child("events");
+			 users.on("value", function(snapshot) {
+				 var key = snapshot.key(); 
+				 var val = snapshot.val();
+				 console.log("val: " + JSON.stringify(val,null,2)); 
+				 cb(val);
+			 });
 		 }
 
 		 var auth = {
@@ -169,10 +185,13 @@ angular.module("myServices").factory(
 			 getAuthData	: function()	{ return authData;							}, 
 			 setUserProfile : function(cb)  { setUserProfile(cb);						},
 			 getMaleUsers   : function(cb)  { getMaleUsers(cb);							},
+			 getFemaleUsers   : function(cb)  { getFemaleUsers(cb);						},
 			 showLoader	    : function()    { showLoader();								}, 
 			 hideLoader	    : function()    { hideLoader();								},
 			 getUserProfile : function() 	{ return userProfile;						},
-			 getProfile		: function(uid,cb)  { return getProfile(uid,cb)			    }
+			 getProfile		: function(uid,cb)  { return getProfile(uid,cb)			    },
+			 createEvent    : function(data,cb) {  return createEvent(data,cb);			},
+			 getAllEvents   : function(cb)	{ return getAllEvents(cb);					}
 
 
 		 };

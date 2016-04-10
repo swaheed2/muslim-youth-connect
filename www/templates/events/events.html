@@ -1,16 +1,24 @@
 <ion-view view-title="Chats">
-  <ion-content>
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-        <img ng-src="{{chat.face}}">
-        <h2>{{chat.name}}</h2>
-        <p>{{chat.lastText}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
+	<ion-content class="padding">
 
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
-      </ion-item>
-    </ion-list>
-  </ion-content>
+		<div style="margin-top:40px;">
+			<button ng-click="createEvent()" class="button button-block button-assertive">Create Event</button>
+		</div>
+
+
+		<div ng-repeat="(key,val) in events"> 
+			<div class="card">
+				<div class="item item-divider">
+					{{val.name}}
+				</div>
+				<div class="item item-text-wrap">
+					{{val.info}}
+				</div> 
+				<div class="item item-divider">
+					Published By: {{val.createdBy.firstName}} {{val.createdBy.lastName}}
+				</div>
+			</div> 
+		</div>
+
+	</ion-content>
 </ion-view>

@@ -3,15 +3,12 @@
 		<button class="button icon ion-ios-search-strong" ng-click="youthSearch()">
 		</button>
 	</ion-nav-buttons>
-	<ion-content>
-		<button ng-click="auth.setUserProfile()">Set User Profile</button>
-		<button ng-click="auth.getMaleUsers()">getMaleUsers</button>
+	<ion-content> 
 		 
 		<ion-list>
-			<ion-item class="item-icon-right" ng-repeat="user in users" type="item-text-wrap" href="#/tab/chats/{{user.uid}}">
+			<ion-item class="item-icon-right" ng-repeat="user in users" type="item-text-wrap" href="#/tab/userDetail/{{user.uid}}">
 				 
-				<h2>{{user.firstName}} {{}}</h2>
-				<p>{{chat.lastText}}</p>
+				<h2>{{user.firstName}} {{user.lastName}}</h2> 
 				<i class="icon ion-chevron-right icon-accessory"></i>
 			</ion-item>
 		</ion-list>

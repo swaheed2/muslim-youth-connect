@@ -1,0 +1,37 @@
+<ion-view view-title="Create Event">
+	<ion-content>
+		<form novalidate name="eventDataForm">
+			<div class="list">
+
+				<!--****************** EVENT NAME -->
+				<label class="item item-input item-stacked-label">
+					<span class="input-label">Name of Event</span>
+					<input type="Event Title" placeholder="Fajr Quran Recitation" ng-model="eventData.name">
+				</label>
+
+				<!--****************** INFO NAME -->
+				<label class="item item-input item-stacked-label">
+					<span class="input-label">Info</span>
+					<input type="Information" placeholder="Information About Event" ng-model="eventData.info">
+				</label>
+
+				<!--****************** GENDER-->
+				<label class="item item-radio item-stacked-label">
+					<div class="item item-divider"> 
+						Type
+					</div>
+					<ion-radio name="gender" ng-model="eventData.type" ng-value="'sport'">Sports</ion-radio>
+					<ion-radio name="gender" ng-model="eventData.type" ng-value="'halaqa'">Halaqa</ion-radio>
+					<ion-radio name="gender" ng-model="eventData.type" ng-value="'quran'">Quran Recitation</ion-radio>
+				</label> 
+
+
+				<button class="button button-block button-assertive" style="margin-top:20px" ng-click="publishEvent()">
+					Publish Event
+				</button>
+				
+				<pre>{{eventData}}</pre>
+			</div>
+		</form>
+	</ion-content>
+</ion-view>

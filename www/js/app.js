@@ -61,7 +61,7 @@ var myApp = angular.module('starter', ['ionic', 'myControllers', 'myServices','f
 		templateUrl: 'templates/signup/signup.html',
 		controller : 'SignupCtrl'
 	})
-	
+
 	// signup state
 		.state('login', {
 		url: '/login', 
@@ -88,8 +88,8 @@ var myApp = angular.module('starter', ['ionic', 'myControllers', 'myServices','f
 		}
 	})
 
-		.state('tab.chats', {
-		url: '/chats',
+		.state('tab.events', {
+		url: '/events',
 		views: {
 			'tab-chats': {
 				templateUrl: 'templates/events/events.html',
@@ -97,8 +97,20 @@ var myApp = angular.module('starter', ['ionic', 'myControllers', 'myServices','f
 			}
 		}
 	})
+
+		.state('tab.createEvent', {
+		url: '/createEvent',
+		views: {
+			'tab-chats': {
+				templateUrl: 'templates/events/createEvent.html',
+				controller: 'EventsCtrl'
+			}
+		}
+	})
+
+
 		.state('tab.chat-detail', {
-		url: '/chats/:uid',
+		url: '/userDetail/:uid',
 		views: {
 			'tab-chats': {
 				templateUrl: 'templates/userDetail/userDetail.html',
@@ -106,16 +118,16 @@ var myApp = angular.module('starter', ['ionic', 'myControllers', 'myServices','f
 			}
 		}
 	})
-	
-//	.state('tab.userDetail', {
-//		url: '/dash/:uid',
-//		views: {
-//			'tab-chats': {
-//				templateUrl: 'templates/userDetail/userDetail.html',
-//				controller: 'UserDetailCtrl'
-//			}
-//		}
-//	})
+
+	//	.state('tab.userDetail', {
+	//		url: '/dash/:uid',
+	//		views: {
+	//			'tab-chats': {
+	//				templateUrl: 'templates/userDetail/userDetail.html',
+	//				controller: 'UserDetailCtrl'
+	//			}
+	//		}
+	//	})
 
 		.state('tab.account', {
 		url: '/account',
