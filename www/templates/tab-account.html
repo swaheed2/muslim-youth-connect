@@ -2,7 +2,7 @@
 	<ion-content>
 		<ion-list>
 			<ion-toggle  ng-model="settings.enableFriends">
-				Enable Friends
+				Enable Notifications
 			</ion-toggle>
 		</ion-list>
 
@@ -10,5 +10,43 @@
 		<button class="button icon ion-power button-large button-block" ng-click="auth.logOut()">
 			Log Out
 		</button>
+
+		<div class = "row responsive-sm card" >
+			First Name: <br> 
+			{{user.firstName}}
+		</div>
+		<div class = "row responsive-sm card">
+			Last Name: <br>
+			{{user.lastName}}
+		</div>
+		<div class = "row responsive-sm card">
+			Age: <br>
+			{{user.age}}
+		</div>
+		<div class = "row responsive-sm card">
+			College: <br>
+			{{user.edu}}
+		</div>
+		<div class = "row responsive-sm card">
+			Email: <br>
+			{{user.email}}
+		</div>
+		<div class = "row responsive-sm card">
+			Masjid:<br>
+			{{user.masjid}}
+		</div>
+		<div class="card">
+			<div class = "row responsive-sm">
+				<div class = "row responsive-sm">
+					Interests: <br> 
+
+					<ion-list  class="noborder">
+						<ion-item  class="noborder" ng-repeat="(key, val) in filterSecId(user.interests)">
+							{{key}}
+						</ion-item>
+					</ion-list>
+				</div>
+			</div>
+		</div> 
 	</ion-content>
 </ion-view>

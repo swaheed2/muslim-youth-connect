@@ -21,21 +21,28 @@ var myApp = angular.module('starter', ['ionic', 'myControllers', 'myServices','f
 
 		console.log("$stateChangeStart");
 		console.log("toState: " + toState.name);
+		console.log("authRequired: " + toState.authRequired);
 		console.log("authData: " + AuthService.getAuthData());
 
-		if(toState.name !== 'starter' &&  toState.name !== 'signup' && toState.name !== 'login' && AuthService.getAuthData() === null)  {
-			console.log("no auth data");
+		//		if(toState.name !== 'starter' &&  toState.name !== 'signup' && toState.name !== 'login' && AuthService.getAuthData() === null)  {
+		//			console.log("no auth data");
+		//			event.preventDefault(); 
+		//			if(toState.name === 'signup'){
+		//				$state.go('signup');
+		//			}
+		//			else if(toState.name === 'login'){
+		//				$state.go('login');
+		//			}
+		//			else {
+		//				$state.go('starter');
+		//			} 
+		//		}
+
+		if (toState.authRequired && AuthService.getAuthData() === null){ //Assuming the AuthService holds authentication logic
+			// User isn’t authenticated
+			$state.transitionTo("login");
 			event.preventDefault(); 
-			if(toState.name === 'signup'){
-				$state.go('signup');
-			}
-			else if(toState.name === 'login'){
-				$state.go('login');
-			}
-			else {
-				$state.go('starter');
-			} 
-		} 
+		}
 	})
 })
 
@@ -85,7 +92,8 @@ var myApp = angular.module('starter', ['ionic', 'myControllers', 'myServices','f
 				templateUrl: 'templates/tab-dash.html',
 				controller: 'YouthCtrl'
 			}
-		}
+		},
+		authRequired: true
 	})
 
 		.state('tab.events', {
@@ -95,28 +103,31 @@ var myApp = angular.module('starter', ['ionic', 'myControllers', 'myServices','f
 				templateUrl: 'templates/events/events.html',
 				controller: 'EventsCtrl'
 			}
-		}
+		},
+		authRequired: true
 	})
 
 		.state('tab.createEvent', {
 		url: '/createEvent',
 		views: {
-			'tab-chats': {
+			'tab-dash': {
 				templateUrl: 'templates/events/createEvent.html',
 				controller: 'EventsCtrl'
 			}
-		}
+		},
+		authRequired: true
 	})
 
 
 		.state('tab.chat-detail', {
 		url: '/userDetail/:uid',
 		views: {
-			'tab-chats': {
+			'tab-dash': {
 				templateUrl: 'templates/userDetail/userDetail.html',
 				controller: 'UserDetailCtrl'
 			}
-		}
+		},
+		authRequired: true
 	})
 
 	//	.state('tab.userDetail', {
@@ -136,7 +147,8 @@ var myApp = angular.module('starter', ['ionic', 'myControllers', 'myServices','f
 				templateUrl: 'templates/tab-account.html',
 				controller: 'AccountCtrl'
 			}
-		}
+		},
+		authRequired: true
 	});
 
 	// if none of the above states are matched, use this as the fallback

@@ -12,7 +12,7 @@ angular.module("myServices").factory(
 		 var ref = new Firebase(refString);  
 		 var Auth =  $firebaseAuth(ref); 
 		 var authData = null;
-		 var userProfile = null;
+		 var userProfile = null; 
 
 		 var showLoader = function(){
 			 $ionicLoading.show({
@@ -27,7 +27,7 @@ angular.module("myServices").factory(
 		 var logIn = function(loginData,cb){
 
 			 Auth.$authWithPassword(loginData).then(function(auth) {
-				 authData = auth; 
+				 authData = auth;   
 				 cb(null,authData);
 
 			 }).catch(function(error) {
@@ -95,6 +95,7 @@ angular.module("myServices").factory(
 
 		 function logOut(){
 			 Auth.$unauth();
+			 userProfile = null;
 			 $state.transitionTo('starter',{location:"replace"})
 		 }
 
@@ -184,11 +185,11 @@ angular.module("myServices").factory(
 			 logOut		: function() { return logOut();									}, 
 			 getAuthData	: function()	{ return authData;							}, 
 			 setUserProfile : function(cb)  { setUserProfile(cb);						},
+			 getUserProfile : function() 	{ return userProfile;						},
 			 getMaleUsers   : function(cb)  { getMaleUsers(cb);							},
 			 getFemaleUsers   : function(cb)  { getFemaleUsers(cb);						},
 			 showLoader	    : function()    { showLoader();								}, 
 			 hideLoader	    : function()    { hideLoader();								},
-			 getUserProfile : function() 	{ return userProfile;						},
 			 getProfile		: function(uid,cb)  { return getProfile(uid,cb)			    },
 			 createEvent    : function(data,cb) {  return createEvent(data,cb);			},
 			 getAllEvents   : function(cb)	{ return getAllEvents(cb);					}
