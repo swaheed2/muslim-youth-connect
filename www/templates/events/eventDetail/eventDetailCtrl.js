@@ -15,7 +15,10 @@ myControllers.controller('EventDetailCtrl', function($scope,$stateParams,AuthSer
 		"Fazeel Tola",
 		"Bilal Khan",
 		"Abdur Rahman",
-		"Bilal Malil"
+		"Bilal Malil",
+		"Abdul Wahab",
+		"Hamza Ali",
+		"Javaid Akhtar",
 	]
 
 
@@ -29,6 +32,7 @@ myControllers.controller('EventDetailCtrl', function($scope,$stateParams,AuthSer
 				$scope.settings.going = true;
 			}
 		}
+		$scope.attendees = shuffle($scope.attendees);
 	}
 	$scope.getAttendance();
 
@@ -36,7 +40,7 @@ myControllers.controller('EventDetailCtrl', function($scope,$stateParams,AuthSer
 		var going = $scope.settings.going;
 
 		if(going){
-			$scope.attendees.push(userProfile.firstName + " " + userProfile.lastName)
+			$scope.attendees.unshift(userProfile.firstName + " " + userProfile.lastName)
 		} 
 		else{
 			for(var i=0; i< $scope.attendees.length;i++){
@@ -47,6 +51,25 @@ myControllers.controller('EventDetailCtrl', function($scope,$stateParams,AuthSer
 		}
 	}
 
+
+	function shuffle(array) {
+		var currentIndex = array.length, temporaryValue, randomIndex;
+
+		// While there remain elements to shuffle...
+		while (0 !== currentIndex) {
+
+			// Pick a remaining element...
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
+
+			// And swap it with the current element.
+			temporaryValue = array[currentIndex];
+			array[currentIndex] = array[randomIndex];
+			array[randomIndex] = temporaryValue;
+		}
+
+		return array;
+	}
 
 
 	$scope.safeApply = function(fn) { 
