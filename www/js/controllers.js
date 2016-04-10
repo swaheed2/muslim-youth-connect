@@ -63,10 +63,12 @@ myControllers.controller('YouthCtrl', function($scope,AuthService,Chats){
 
 
 
-myControllers.controller('AccountCtrl', function($scope) {
+myControllers.controller('AccountCtrl', function($scope,AuthService) {
 	$scope.settings = {
 		enableFriends: true
-	};
+	}; 
+
+	$scope.user = AuthService.getUserProfile();
 });
 
 
