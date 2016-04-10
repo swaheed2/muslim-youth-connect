@@ -92,8 +92,8 @@ var myApp = angular.module('starter', ['ionic', 'myControllers', 'myServices','f
 		url: '/chats',
 		views: {
 			'tab-chats': {
-				templateUrl: 'templates/tab-chats.html',
-				controller: 'ChatsCtrl'
+				templateUrl: 'templates/events/events.html',
+				controller: 'EventsCtrl'
 			}
 		}
 	})

@@ -25,15 +25,15 @@ angular.module("myServices").factory(
 		 };
 
 		 var logIn = function(loginData,cb){
-			 showLoader("Logging In...");
+
 			 Auth.$authWithPassword(loginData).then(function(auth) {
 				 authData = auth; 
 				 cb(null,authData);
-				 hideLoader();
+
 			 }).catch(function(error) {
 				 console.log(error);
 				 cb(error,null)
-				 hideLoader();
+
 			 });
 		 };
 
@@ -139,7 +139,8 @@ angular.module("myServices").factory(
 
 			 getAuthData	: function()	{ return authData;							},
 
-			 setUserProfile : function(cb)  { setUserProfile(cb)						}
+			 setUserProfile : function(cb)  { setUserProfile(cb)						},
+			 getMaleUsers   : function(cb)  { getMaleUsers(cb)							}
 
 		 };
 

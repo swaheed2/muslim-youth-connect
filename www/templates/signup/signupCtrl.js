@@ -30,6 +30,7 @@ myControllers.controller(
 
 
 		$scope.signUp = function() {
+			AuthService.showLoader();
 			var signUpData = (JSON.parse(JSON.stringify($scope.signUpData)));
 			if($scope.signUpData.password === $scope.signUpData.confirmPassword){
 				AuthService.signUp($scope.signUpData,function(err,res){
@@ -44,10 +45,18 @@ myControllers.controller(
 						},function(err,res){
 							if(!err){
 								$state.transitionTo('tab.dash',{location:"replace"});
+								AuthService.hideLoader();
+							}
+							else{
+								AuthService.hideLoader();
 							}
 
 						}); 
 					}
+					else{
+						AuthService.hideLoader();
+					}
+					
 				});
 			}
 			else {
