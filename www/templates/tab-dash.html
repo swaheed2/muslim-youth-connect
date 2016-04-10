@@ -9,6 +9,7 @@
 			<ion-item class="item-icon-right" ng-repeat="user in users" type="item-text-wrap" href="#/tab/userDetail/{{user.uid}}">
 				 
 				<h2>{{user.firstName}} {{user.lastName}}</h2> 
+				<h4 style="color:#444; font-style:italic">{{user.edu}}</h4> 
 				<i class="icon ion-chevron-right icon-accessory"></i>
 			</ion-item>
 		</ion-list>

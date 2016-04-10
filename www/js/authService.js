@@ -167,6 +167,14 @@ angular.module("myServices").factory(
 			 });
 		 }
 
+		 function updateAttendance(id,ava) {
+			 console.log("update attedance method ran ");
+			 
+			 var events = ref.child("events");
+			 
+			 
+		 }
+
 		 var auth = {
 
 			 init		:   function() {
@@ -182,17 +190,18 @@ angular.module("myServices").factory(
 				 return signUp(signUpData,cb);
 			 },
 
-			 logOut		: function() { return logOut();									}, 
-			 getAuthData	: function()	{ return authData;							}, 
-			 setUserProfile : function(cb)  { setUserProfile(cb);						},
-			 getUserProfile : function() 	{ return userProfile;						},
-			 getMaleUsers   : function(cb)  { getMaleUsers(cb);							},
-			 getFemaleUsers   : function(cb)  { getFemaleUsers(cb);						},
-			 showLoader	    : function()    { showLoader();								}, 
-			 hideLoader	    : function()    { hideLoader();								},
-			 getProfile		: function(uid,cb)  { return getProfile(uid,cb)			    },
-			 createEvent    : function(data,cb) {  return createEvent(data,cb);			},
-			 getAllEvents   : function(cb)	{ return getAllEvents(cb);					}
+			 logOut		: function() { return logOut();											}, 
+			 getAuthData	: function()	{ return authData;									}, 
+			 setUserProfile : function(cb)  { setUserProfile(cb);								},
+			 getUserProfile : function() 	{ return userProfile;								},
+			 getMaleUsers   : function(cb)  { getMaleUsers(cb);									},
+			 getFemaleUsers   : function(cb)  { getFemaleUsers(cb);								},
+			 showLoader	    : function()    { showLoader();										}, 
+			 hideLoader	    : function()    { hideLoader();										},
+			 getProfile		: function(uid,cb)  { return getProfile(uid,cb)			    		},
+			 createEvent    : function(data,cb) {  return createEvent(data,cb);					},
+			 getAllEvents   : function(cb)	{ return getAllEvents(cb);							},
+			 updateAttendance   : function(id,ava)	{ return updateAttendance(id,ava);			}
 
 
 		 };

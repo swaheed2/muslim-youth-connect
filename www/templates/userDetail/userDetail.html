@@ -2,33 +2,18 @@
 	<ion-content class="padding" scroll="true"> 
 
 		<div class = "row responsive-sm card" >
-			 Name: <br> 
-			<strong>{{user.firstName}} {{user.lastName}}</strong>
-            <br>
-            <strong>{{user.hafidh? "Hafidh" : ""}}</strong>
-		</div>
-		<div class = "row responsive-sm card">
-			Age: <br>
-			<strong>{{user.age}}</strong>
-		</div>
-		<div class = "row responsive-sm card">
-			College: <br>
-			<strong>{{user.edu}}</strong>
-           
-		</div>
+			<p> Name: <strong>{{user.firstName}} {{user.lastName}} - {{user.hafidh? "Hafidh" : ""}}</strong></p>
+			 
 
-		<div class = "row responsive-sm card">
-			Email: <br>
-			<strong>{{user.email}}</strong>
-		</div>
-		<div class = "row responsive-sm card">
-			Masjid:<br>
-			<strong>{{user.masjid}}</strong>
-		</div>
+			<p>Age: <strong>{{user.age}}</strong></p>
+			<p>College: <strong>{{user.edu}}</strong></p>
+			<p>Email:  <strong>{{user.email}}</strong></p>
+			<p>Masjid: <strong>{{user.masjid}}</strong></p>
+		</div> 
 		<div class="card">
 			<div class = "row responsive-sm">
 				<div class = "row responsive-sm" style="text-align: center;">
-				Interests: <br> 
+					Interests: <br> 
 
 					<ion-list  class="noborder">
 						<ion-item style="margin:-5px;" class="noborder" ng-repeat="(key, val) in filterSecId(user.interests)">

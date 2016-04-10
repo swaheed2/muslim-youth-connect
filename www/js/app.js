@@ -130,15 +130,17 @@ var myApp = angular.module('starter', ['ionic', 'myControllers', 'myServices','f
 		authRequired: true
 	})
 
-	//	.state('tab.userDetail', {
-	//		url: '/dash/:uid',
-	//		views: {
-	//			'tab-chats': {
-	//				templateUrl: 'templates/userDetail/userDetail.html',
-	//				controller: 'UserDetailCtrl'
-	//			}
-	//		}
-	//	})
+		.state('tab.event-detail', {
+		url: '/eventDetail/:id',
+		views: {
+			'tab-dash': {
+				templateUrl: 'templates/events/eventDetail/eventDetail.html',
+				controller: 'EventDetailCtrl'
+			}
+		},
+		authRequired: true
+	})
+
 
 		.state('tab.account', {
 		url: '/account',

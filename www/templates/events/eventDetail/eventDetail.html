@@ -1,0 +1,30 @@
+<ion-view view-title="Event Details">
+	<ion-content class="padding" scroll="true"> 
+
+		<ion-list>
+			<ion-toggle  ng-model="settings.going" ng-change="updateAttendance()">
+				Going
+			</ion-toggle>
+		</ion-list>
+
+		<ion-list>
+			<ion-item class="item-icon-right" ng-repeat="(key,val) in events" type="item-text-wrap" >
+				<pre>{{key}}</pre>
+				<div href="#/tab/eventDetail/{{key}}">
+					<div class="card">
+						<div class="item item-divider">
+							{{val.name}}
+						</div>
+						<div class="item item-text-wrap">
+							{{val.info}}
+						</div> 
+						<div class="item item-divider">
+							Published By: {{val.createdBy.firstName}} {{val.createdBy.lastName}}
+						</div>
+					</div> 
+				</div>
+
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>
