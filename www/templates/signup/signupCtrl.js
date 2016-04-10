@@ -9,24 +9,7 @@ myControllers.controller(
 
 
 		$scope.signUpData = {
-			firstName : "male1",
-			lastName  : "male1",
-			age		  : 10,
-			email     : "male1@gmail.com",
-			password  : "asdf",
-			confirmPassword : "asdf",
-			masjid    : "IACC",
-			gender    : "M",
-			interests : {
-				basketball : true,
-				soccer	   : true,
-				football   : false,
-				badminton  : false
-			},
-			hafidh	  : true,
-			edu		  : "UTD"
-
-		};
+        };
 
 
 		$scope.signUp = function() {
