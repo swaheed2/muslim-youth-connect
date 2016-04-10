@@ -4,6 +4,7 @@
 myControllers.controller('UserDetailCtrl', function($scope,$stateParams,AuthService) {
 
 	$scope.user = {};
+    
 
 	AuthService.getProfile($stateParams.uid,function(profile){
 		console.log("profile: " + JSON.stringify(profile,null,2));
@@ -20,5 +21,17 @@ myControllers.controller('UserDetailCtrl', function($scope,$stateParams,AuthServ
 			this.$apply(fn);
 		}
 	}; 
+    
+    $scope.filterSecId = function(items) {
+    var result = {};
+    angular.forEach(items, function(value, key) {
+        if (value) {
+            result[key] = value;
+        }
+    });
+    return result;
+}
+    
+    
 
 });

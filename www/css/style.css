@@ -23,3 +23,16 @@
     width: 100%;
     bottom:10%;
 }
+
+.bordersleft{
+    border: 1px solid black;
+    border-right: none;
+}
+
+.bordersright{
+    border: 1px solid black;
+    border-left: none;
+}
+.noborder{
+    border: none;
+}
