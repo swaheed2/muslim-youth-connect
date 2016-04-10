@@ -14,9 +14,9 @@ angular.module("myServices").factory(
 		 var authData = null;
 		 var userProfile = null;
 
-		 var showLoader = function(message){
+		 var showLoader = function(){
 			 $ionicLoading.show({
-				 template: '<ion-spinner icon="ios"></ion-spinner> <br>' + message, 
+				 template: '<ion-spinner icon="ios"></ion-spinner> <br>Loading...', 
 			 })
 		 };
 
@@ -114,9 +114,22 @@ angular.module("myServices").factory(
 		 };
 
 		 function getMaleUsers(cb) {
-			 var ref = ref.child("users");
-			 ref.orderByChild("height").equalTo(25).on("child_added", function(snapshot) {
-				 console.log(snapshot.key());
+			 var users = ref.child("users");
+			 users.orderByChild("gender").equalTo("M").on("child_added", function(snapshot) {
+				 var key = snapshot.key(); 
+				 var val = snapshot.val();
+				 console.log("val: " + JSON.stringify(val,null,2)); 
+				 cb(val);
+			 });
+		 }
+
+		 function getFemaleUsers(cb) {
+			 var users = ref.child("users");
+			 users.orderByChild("gender").equalTo("F").on("child_added", function(snapshot) {
+				 var key = snapshot.key(); 
+				 var val = snapshot.val();
+				 console.log("val: " + JSON.stringify(val,null,2)); 
+				 cb(val);
 			 });
 		 }
 
@@ -135,12 +148,14 @@ angular.module("myServices").factory(
 				 return signUp(signUpData,cb);
 			 },
 
-			 logOut		: function() { return logOut()									},
-
-			 getAuthData	: function()	{ return authData;							},
-
-			 setUserProfile : function(cb)  { setUserProfile(cb)						},
-			 getMaleUsers   : function(cb)  { getMaleUsers(cb)							}
+			 logOut		: function() { return logOut();									}, 
+			 getAuthData	: function()	{ return authData;							}, 
+			 setUserProfile : function(cb)  { setUserProfile(cb);						},
+			 getMaleUsers   : function(cb)  { getMaleUsers(cb);							},
+			 showLoader	    : function()    { showLoader();								}, 
+			 hideLoader	    : function()    { hideLoader();								}
+			 
+			 
 
 		 };
 

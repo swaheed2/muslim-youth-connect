@@ -37,7 +37,14 @@ myControllers.controller('YouthCtrl', function($scope,AuthService,Chats){
 
 	$scope.auth = AuthService;
 
-	$scope.chats = Chats.all();
+	if(AuthService.getUserProfile().gender === "M"){
+		console.log("user is male");
+		AuthService.getMaleUsers(function(users){
+			$scope.users = users;
+		})
+	}
+	
+	
 	$scope.remove = function(chat) {
 		Chats.remove(chat);
 	};
